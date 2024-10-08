@@ -1,0 +1,17 @@
+
+class Solution {
+public:
+    int minLength(string s) {
+        while(s.find("AB") != std::string::npos || s.find("CD") != std::string::npos){
+            auto posAB = s.find("AB");
+            if(posAB != std::string::npos){
+                s.erase(posAB,2);
+            }
+            auto posCD = s.find("CD");
+            if(posCD != std::string::npos){
+                s.erase(posCD,2);
+            }
+        }
+        return s.length();
+    }
+};
