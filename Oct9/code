@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int open = 0, close = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') {  // Compare the character at index i
+                open++;
+            } else if (s[i] == ')') {
+                if (open > 0) {
+                    open--;  // A matching pair found, so reduce the count of open
+                } else {
+                    close++;  // Unmatched closing parenthesis
+                }
+            }
+        }
+
+        // The number of unmatched parentheses is the sum of unmatched open and close
+        return open + close;
+    }
+};
