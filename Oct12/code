@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minGroups(vector<vector<int>>& intervals) {
+        
+        // Sorting the intervals bases on starting points
+        sort(begin(intervals),end(intervals));
+
+        // Define Min-Heap to store endpoints of each interval
+        priority_queue<int, vector<int>, greater<int>> pq;
+
+        // Process each interval one by one 
+        for(vector<int>& interval : intervals){
+            int start = interval[0];
+            int end = interval[1];
+
+            if(!pq.empty() && start>pq.top()){
+                pq.pop();
+            }
+
+            pq.push(end);
+        }
+        // Size of the min heap will be total number of interval groups
+        return pq.size();
+    }
+};
