@@ -1,0 +1,20 @@
+# Write your MySQL query statement below
+
+
+select a1.machine_id , round(avg(a2.timestamp - a1.timestamp),3) as processing_time
+-- select a1.machine_id, a1.timestamp , a2.timestamp
+from activity a1
+inner join activity a2
+on a1.process_id = a2.process_id
+and a1.machine_id = a2.machine_id
+and a1.timestamp < a2.timestamp
+group by a1.machine_id;
+
+-- | machine_id | timestamp | timestamp |
+-- | ---------- | --------- | --------- |
+-- | 0          | 0.712     | 1.52      | 1.52 - 0.712 = 0.808  Thus, 0.808 + 0.98 / 2 == 0.894
+-- | 0          | 3.14      | 4.12      | 4.12 - 3.14  = 0.98
+-- | 1          | 0.55      | 1.55      |
+-- | 1          | 0.43      | 1.42      |
+-- | 2          | 4.1       | 4.512     |
+-- | 2          | 2.5       | 5         |
