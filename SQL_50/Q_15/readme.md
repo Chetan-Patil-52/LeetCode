@@ -1,1 +1,1 @@
-# 620. Not Boring Movies
+# 1251. Average Selling Price
