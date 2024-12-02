@@ -16,6 +16,8 @@
 //     }
 // };
 
+// SOLVED using TRIE Data Structure
+
 class Solution {
     struct trienode{
         int idx;
