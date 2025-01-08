@@ -1,5 +1,8 @@
 # LeetCode
 
+Check out my LeetCode profile:  
+[LeetCode Profile - Chetan Patil](https://leetcode.com/<your-username>/)
+
 ## Today's DCC
 [Number of Ways to Split Array](https://leetcode.com/problems/number-of-ways-to-split-array/?envType=daily-question&envId=2025-01-03)
 
