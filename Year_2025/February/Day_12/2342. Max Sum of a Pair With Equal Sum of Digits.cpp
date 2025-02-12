@@ -37,3 +37,77 @@ public:
         return result;
     }
 };
+
+
+// ------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int getDigitSum(int num){
+    int sum = 0;
+    while(num > 0){
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+
+class Solution {
+public:
+    int maximumSum(vector<int>& nums) {
+        int n = nums.size();
+        int result = -1;
+
+        unordered_map<int, int> mp;
+
+        for(int i=0;i<n;i++){
+            int digitSum = getDigitSum(nums[i]);
+
+            if(mp.count(digitSum)){
+                result = max(result,mp[digitSum] + nums[i]);
+            }
+
+            mp[digitSum] = max(mp[digitSum], nums[i]);
+        }
+        return result;
+    }
+};
+
+
+//---------------
+#include <bits/stdc++.h>
+using namespace std;
+
+int getDigitSum(int num){
+    int sum = 0;
+    while(num > 0){
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+
+class Solution {
+public:
+    int maximumSum(vector<int>& nums) {
+        int n = nums.size();
+        int result = -1;
+
+        // unordered_map<int, int> mp;
+        int mp[82] = {0};
+
+        for(int i=0;i<n;i++){
+            int digitSum = getDigitSum(nums[i]);
+
+            if(mp[digitSum] > 1){
+                result = max(result,mp[digitSum] + nums[i]);
+            }
+
+            mp[digitSum] = max(mp[digitSum], nums[i]);
+        }
+        return result;
+    }
+};
+
+
