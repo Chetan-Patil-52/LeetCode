@@ -1,3 +1,5 @@
+// Brueteforce didn't worked... --- TLE : O(n^2)
+
 class Solution {
 public:
     bool canDistr(vector<int>& candies, int mid, long long k) {
