@@ -29,7 +29,7 @@ public:
         int mask = 0;
         while(j < n){
 
-            while(mask & nums[j] != 0){
+            while((mask & nums[j]) != 0){
                 mask = (mask ^ nums[i]);
                 i++;
             }
