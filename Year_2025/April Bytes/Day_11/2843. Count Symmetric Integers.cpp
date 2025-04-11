@@ -70,3 +70,33 @@ public:
         return count;
     }
 };
+
+
+// Approach - 3 (Optimal) O(n)
+
+class Solution {
+public:
+    int countSymmetricIntegers(int low, int high) {
+        int count = 0;
+
+        // As it is mentioned in the constrain 10^4 the length can be btw 1-4;
+        // But as it is symetric it may be either 2 or 4;
+        for(int num=low;num<=high;num++){
+            if(num>10 && num<=99 && num%11==0){
+            count++;
+            }
+            else if(num>999 && num<=9999){
+                int dig1 = num/1000;
+                int dig2 = (num/100) % 10;
+                int dig3 = (num/10) % 10;
+                int dig4 = (num) % 10;
+
+                if(dig1 + dig2 == dig3 + dig4){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
+
