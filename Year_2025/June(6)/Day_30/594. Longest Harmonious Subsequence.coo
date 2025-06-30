@@ -1,0 +1,56 @@
+// Made a mistake at first by taking abs it's wrong way to solve this problem here we have to check subsequecces whose diff - 1 { ie. there should be only 2 numbers in subsequence }
+// Eg. id i try brute force and choose ith elem 1 then abs could give 2 poss - > {0,1,2} 
+
+CODE : 
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        int n = nums.size();
+        int min_ = nums[0];
+        int max_ = nums[0];
+        int diff = INT_MAX;
+        for(int i=1;i<n;i++){
+            diff = min(abs(nums[i]-nums[i-1]),diff);
+            min_ = min(min_,nums[i]);
+            max_ = max(max_,nums[i]);
+        }
+        if(min_==max_  || diff > 1) return 0;
+
+        int maxi = 0;
+        for(int i=0;i<n;i++){
+            int num = nums[i];
+            int cnt = 1;
+            for(int j=i+1;j<n;j++){
+                if(abs(nums[j]-nums[i])==0 || abs(nums[j]-nums[i])==1){
+                    cnt++;
+                }
+            }
+            maxi = max(cnt,maxi);
+        }
+        return maxi;
+    }
+};
+
+UPDATED with map;
+CODE : 
+
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int,int> mp;
+        for(auto &num : nums){
+            mp[num]++;
+        }
+
+        int maxi = 0;
+        for(auto &num : nums){
+            int minNum = num;
+            int maxNum = num+1;
+            if(mp.count(maxNum)){
+                maxi = max(maxi,mp[minNum] + mp[maxNum]);
+            }
+        }
+        return maxi;
+    }
+};
